@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For DU DARLING ❤️</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Roboto,sans-serif;
+}
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow-x:hidden;
+    padding:1rem;
+}
+
+/* YOUR BACKGROUND - upload bg.jpg to GitHub */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    background:url('bg.jpg') center/cover no-repeat;
+    opacity:.35;
+    z-index:-2;
+}
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:-1;
+}
+
+/* DU DARLING FIXED AT TOP */
+.love-name{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    font-size:1.8rem;
+    font-weight:bold;
+    letter-spacing:3px;
+    text-shadow:0 0 15px #ff1493, 0 0 30px #ff69b4;
+    z-index:50;
+    background:rgba(0,0,0,0.3);
+    padding:0.5rem 2rem;
+    border-radius:50px;
+    backdrop-filter:blur(5px);
+    border:1px solid rgba(255,192,203,0.5);
+    white-space:nowrap;
+}
+
+/* flying butterflies & hearts */
+#flutter-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+.flyer {
+    position: absolute;
+    font-size: 1.7rem;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 3px hotpink);
+    animation: floatAround 18s infinite ease-in-out;
+    user-select: none;
+    pointer-events: none;
+    z-index: 5;
+}
+@keyframes floatAround {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(12vw, 10vh) rotate(15deg); }
+    50% { transform: translate(25vw, -5vh) rotate(-5deg); }
+    75% { transform: translate(8vw, 18vh) rotate(8deg); }
+    100% { transform: translate(-5vw, 5vh) rotate(-3deg); }
+}
+
+/* card */
+.questionnaire{
+    width:100%;
+    max-width:720px;
+    background:rgba(255,240,245,.95);
+    backdrop-filter:blur(10px);
+    padding:2rem;
+    border-radius:30px;
+    box-shadow:0 20px 40px rgba(199,21,133,0.4);
+    z-index:20;
+    border:2px solid rgba(255,105,180,0.3);
+    margin-top:60px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:1.5rem;
+    color:#7a0033;
+    font-size:1.8rem;
+    text-shadow:1px 1px 0 #ffb6c1;
+}
+
+.options{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:1rem;
+}
+
+.option-btn{
+    padding:.8rem 1.8rem;
+    border-radius:40px;
+    border:3px solid #c2185b;
+    background:#ffe3ef;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:1.1rem;
+    box-shadow:0 5px 0 #8b0a4a;
+    transition:all 0.1s;
+}
+.option-btn:active{
+    transform:translateY(5px);
+    box-shadow:none;
+}
+
+.evil-no{
+    background:#2c0e16;
+    color:white;
+    border-color:#ff889d;
+    position:relative;
+    transition:transform 0.2s;
+}
+
+textarea{
+    width:100%;
+    padding:1rem;
+    border-radius:15px;
+    margin-top:1rem;
+    font-size:1rem;
+    border:3px solid #c2185b;
+    background:#fff9fb;
+    min-height:120px;
+}
+
+.nav-btn{
+    margin-top:1rem;
+    padding:.8rem 2.5rem;
+    border:none;
+    border-radius:40px;
+    background:#c2185b;
+    color:white;
+    font-weight:bold;
+    font-size:1.2rem;
+    cursor:pointer;
+    box-shadow:0 5px 0 #7a0033;
+    transition:0.1s;
+}
+.nav-btn:active{
+    transform:translateY(5px);
+    box-shadow:none;
+}
+
+#answers-summary{
+    max-height:400px;
+    overflow:auto;
+    font-size:1rem;
+    line-height:1.8;
+    background:#feeef4;
+    padding:1.5rem;
+    border-radius:20px;
+    margin-bottom:1rem;
+}
+#answers-summary p{
+    border-bottom:1px dashed #d66b8f;
+    padding:0.5rem 0;
+}
+
+/* music */
+#music-control{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:rgba(255,192,203,0.9);
+    padding:.8rem 1.2rem;
+    border-radius:40px;
+    cursor:pointer;
+    z-index:100;
+    backdrop-filter:blur(5px);
+    border:2px solid white;
+    font-size:1.2rem;
+}
+
+.checkbox-group{
+    display:flex;
+    flex-direction:column;
+    align-items:start;
+    background:#fce4ec;
+    padding:1.5rem;
+    border-radius:20px;
+    margin:1rem 0;
+}
+.checkbox-group label{
+    font-size:1.1rem;
+    margin:0.5rem 0;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
+.checkbox-group input{
+    width:20px;
+    height:20px;
+}
+
+.instruction{
+    color:#911f4b;
+    font-size:0.9rem;
+    margin-top:0.5rem;
+    font-style:italic;
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLYING BUTTERFLIES & HEARTS -->
+<div id="flutter-container"></div>
+
+<div class="love-name">❤️ DU DARLING ❤️</div>
+
+<div class="questionnaire" id="app"></div>
+
+<!-- YOUR SONG - upload song.mp3 to GitHub -->
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mp3">
+</audio>
+<div id="music-control" onclick="toggleMusic()"><i class="fas fa-music"></i> ♪</div>
+
+<script>
+// ================= CREATE FLYING ELEMENTS =================
+(function createFlyers() {
+    const container = document.getElementById('flutter-container');
+    if (!container) return;
+    const symbols = ['🦋', '🦋', '❤️', '❤️', '🦋', '💖', '🦋', '💘', '❤️‍🔥', '🦋'];
+    for (let i = 0; i < 18; i++) {
+        let fly = document.createElement('div');
+        fly.className = 'flyer';
+        fly.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        fly.style.left = Math.random() * 100 + '%';
+        fly.style.top = Math.random() * 100 + '%';
+        fly.style.fontSize = (1.2 + Math.random() * 2) + 'rem';
+        fly.style.animationDuration = (12 + Math.floor(Math.random() * 20)) + 's';
+        fly.style.animationDelay = (Math.random() * -10) + 's';
+        container.appendChild(fly);
+    }
+})();
+
+// ================= STATE =================
+const app = document.getElementById('app');
+
+let answers = {
+    q1: null, // will you answer
+    q2: '',   // promise write
+    q3: null, // hug me
+    q4: '',   // how much time hug
+    q5: null, // want my kisses
+    q6: [],   // places kisses (3 selections)
+    q7: '',   // wanna kiss me
+    q8: [],   // what places spike my heat (4 selections)
+    q9: [],   // what u like most (3 selections)
+    q10: [],  // what i like most (4 selections)
+    q11: [],  // which position (3 selections)
+    q12: null, // want it badly
+    q13: '',   // how much you love
+    q14: null, // be my valentine
+    q15: []    // promise u want me to make
+};
+
+// ================= STEPS =================
+const steps = [
+    {question: "🦋 will you answer these? 🦋", type: 'yesno-evil'},
+    {question: "💌 what promise you will make for me?", type: 'textarea', key: 'q2'},
+    {question: "🤗 will you hug me?", type: 'yesno-evil', key: 'q3'},
+    {question: "⏳ how much time u need that hug?", type: 'options', options: ['1 min hug', '1 hr hug', 'all night warm hug'], key: 'q4'},
+    {question: "💋 Do you want my kisses?", type: 'yesno-evil', key: 'q5'},
+    {question: "🔥 where do you want my kisses? (select THREE)", type: 'checkbox', options: ['hairy salty armpits', 'thin nipples', 'magical shishi', 'smooth inner thighs', 'chin'], maxSelect: 3, key: 'q6'},
+    {question: "😚 do you wanna kiss me?", type: 'only-yes', key: 'q7'},
+    {question: "✨ acc to you what places can spike up my heat? (select 4)", type: 'checkbox', options: ['my secured nipples', 'straight pipi', 'my two moley balls', 'my salty armpits', 'my sweet tongue', 'my neck'], maxSelect: 4, key: 'q8'},
+    {question: "😈 what do u like the most above the things that i do? (select 3)", type: 'checkbox', options: ['keeping my fingers inside ur mouth', 'biting your boobs', 'licking your face', 'fingering you rigoursly', 'smelling your armpits and licking them', 'enjoying your shishi smell and licking'], maxSelect: 3, key: 'q9'},
+    {question: "🤔 what do you think I like the most? (select 4)", type: 'checkbox', options: ['you licking my face', 'u spitting and sucking my pipi and balls', 'licking and kissing my nipples', 'fingering yourself', 'kissing my armpits', 'hickeys all over me', 'vomiting on my pipi'], maxSelect: 4, key: 'q10'},
+    {question: "🍑 which position u like the most? (select 3)", type: 'checkbox', options: ['u sitting and bouncing on me', 'me lying on you and doing it', 'making you stand and rigoursly fingering', 'holding and squeezing your hair and doing it', 'turning you back and trying to do it'], maxSelect: 3, key: 'q11'},
+    {question: "💥 do you want it badly right now?", type: 'yesno-evil', key: 'q12'},
+    {question: "💗 tell me how much you love (write freely)", type: 'textarea', key: 'q13'},
+    {question: "♾️ will you be my valentine's till i die?", type: 'yesno-evil', key: 'q14'},
+    {question: "🤝 what promise do u want me to make? (any number)", type: 'checkbox', options: ['will not get tired of you no matter what', 'wont leave you ever', 'always be there for you', 'will make u smile', 'will give you energy everyday', 'will show ego and attitude', 'will show rudeness', 'hold my hand ill show you not everyone leaves'], maxSelect: Infinity, key: 'q15'},
+    {question: "📜 your answers, my love", type: 'summary'}
+];
+
+// ================= FUNCTIONS =================
+window.nextStep = function(i) {
+    if (i >= steps.length) i = steps.length - 1;
+    renderStep(i);
+};
+
+window.handleYes = function(i) {
+    switch(i) {
+        case 0: answers.q1 = 'YES'; break;
+        case 2: answers.q3 = 'YES'; break;
+        case 4: answers.q5 = 'YES'; break;
+        case 11: answers.q12 = 'YES'; break;
+        case 13: answers.q14 = 'YES'; break;
+    }
+    nextStep(i + 1);
+};
+
+window.handleOnlyYes = function(i) {
+    if (i === 6) answers.q7 = 'YES i wanna do it';
+    nextStep(i + 1);
+};
+
+window.selectOption = function(i, v) {
+    if (i === 3) answers.q4 = v;
+    nextStep(i + 1);
+};
+
+window.submitText = function(i) {
+    const ta = document.getElementById('ta_' + i);
+    let v = ta ? ta.value.trim() : '';
+    if (!v) v = '...';
+    if (i === 1) answers.q2 = v;
+    if (i === 12) answers.q13 = v;
+    nextStep(i + 1);
+};
+
+window.submitCheckbox = function(i) {
+    let checkboxes = document.querySelectorAll(`#chk_${i} input:checked`);
+    let values = Array.from(checkboxes).map(cb => cb.value);
+    let step = steps[i];
+    let max = step.maxSelect;
+    
+    if (max !== Infinity && values.length !== max) {
+        alert(`please select exactly ${max} options 💕`);
+        return;
+    }
+    
+    switch(i) {
+        case 5: answers.q6 = values; break;
+        case 7: answers.q8 = values; break;
+        case 8: answers.q9 = values; break;
+        case 9: answers.q10 = values; break;
+        case 10: answers.q11 = values; break;
+        case 14: answers.q15 = values; break;
+    }
+    
+    nextStep(i + 1);
+};
+
+window.dodgeButton = function(btn) {
+    let x = (Math.random() * 300 - 150);
+    let y = (Math.random() * 300 - 150);
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+    setTimeout(() => {
+        btn.style.transform = '';
+    }, 400);
+};
+
+window.toggleMusic = function() {
+    const m = document.getElementById('bgMusic');
+    m.paused ? m.play() : m.pause();
+};
+
+window.restart = function() {
+    answers = {
+        q1: null, q2: '', q3: null, q4: '', q5: null,
+        q6: [], q7: '', q8: [], q9: [], q10: [],
+        q11: [], q12: null, q13: '', q14: null, q15: []
+    };
+    renderStep(0);
+};
+
+// ================= RENDER =================
+function renderStep(i) {
+    const step = steps[i];
+    if (!step) return;
+    
+    let html = `<h2>${step.question}</h2>`;
+
+    if (step.type === 'yesno-evil') {
+        html += `<div class="options">
+            <button class="option-btn" onclick="handleYes(${i})">YES</button>
+            <button class="option-btn evil-no" onclick="dodgeButton(this)">NO</button>
+        </div>`;
+    }
+    else if (step.type === 'only-yes') {
+        html += `<div class="options">
+            <button class="option-btn" onclick="handleOnlyYes(${i})">✅ YES I WANNA DO IT</button>
+        </div>`;
+    }
+    else if (step.type === 'textarea') {
+        html += `<textarea id="ta_${i}" placeholder="type here ..."></textarea>
+        <button class="nav-btn" onclick="submitText(${i})">Next</button>`;
+    }
+    else if (step.type === 'options') {
+        html += `<div class="options">`;
+        step.options.forEach(o => {
+            html += `<button class="option-btn" onclick="selectOption(${i}, '${o.replace(/'/g, "\\'")}')">${o}</button>`;
+        });
+        html += `</div>`;
+    }
+    else if (step.type === 'checkbox') {
+        html += `<div class="checkbox-group" id="chk_${i}">`;
+        step.options.forEach(opt => {
+            html += `<label><input type="checkbox" value="${opt.replace(/"/g, '&quot;')}"> ${opt}</label>`;
+        });
+        html += `</div>`;
+        let max = step.maxSelect === Infinity ? '(any number)' : `(max ${step.maxSelect})`;
+        html += `<button class="nav-btn" onclick="submitCheckbox(${i})">Next ${max}</button>`;
+        if (step.maxSelect !== Infinity) {
+            html += `<div class="instruction">Please select ${step.maxSelect} options</div>`;
+        }
+    }
+    else if (step.type === 'summary') {
+        let summaryHtml = '<div id="answers-summary">';
+        for (let key in answers) {
+            let val = answers[key];
+            if (Array.isArray(val)) val = val.length ? val.join(' · ') : '—';
+            else if (val === null || val === '') val = '—';
+            summaryHtml += `<p><strong>${key}:</strong> ${val}</p>`;
+        }
+        summaryHtml += '</div>';
+        html += summaryHtml;
+        html += `<button class="nav-btn" onclick="restart()">✨ Start Over</button>`;
+    }
+
+    app.innerHTML = html;
+}
+
+// Auto-play music on first click
+document.addEventListener('click', function initAudio() {
+    let music = document.getElementById('bgMusic');
+    music.play().catch(e => console.log('Audio autoplay prevented - click music button to play'));
+    document.removeEventListener('click', initAudio);
+}, { once: true });
+
+// Start the first question
+renderStep(0);
+</script>
+</body>
+</html>
